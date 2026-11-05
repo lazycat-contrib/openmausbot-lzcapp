@@ -1,0 +1,13 @@
+params:
+  - id: signin_emails
+    type: string
+    name: "Sign-in emails"
+    description: "Comma-separated email addresses allowed to pair via email code. Leave empty to use pairing codes only."
+    default_value: ""
+    optional: true
+
+locales:
+  zh:
+    signin_emails:
+      name: "允许登录邮箱"
+      description: "允许通过邮箱验证码登录的邮箱列表（逗号分隔）。留空则仅使用配对码。"

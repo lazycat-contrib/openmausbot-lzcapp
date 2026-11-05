@@ -1,0 +1,33 @@
+application:
+  subdomain: openmausbot
+  upstreams:
+    - location: /
+      backend: http://omb:8799/
+    - location: /hooks/
+      backend: http://omb:8800/
+
+services:
+  omb:
+    # ghcr.io/milind-soni/openmausbot:v0.1.141
+    image: registry.lazycat.cloud/czyt/milind-soni/openmausbot:PLACEHOLDER
+    environment:
+      - OMB_PORT=8799
+      - OMB_WEBHOOK_PORT=8800
+      - OMB_PUBLIC_URL=https://openmausbot.{{ .S.AppDomain }}
+      - OMB_WEBHOOK_PUBLIC_URL=https://openmausbot.{{ .S.AppDomain }}
+      - OMB_SIGNIN_EMAILS={{ .U.signin_emails }}
+    shm_size: 512m
+    binds:
+      - /lzcapp/var/data:/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - curl -sf http://127.0.0.1:8799/api/health | grep -q openmausbot
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+usage: |
+  打开应用后按页面提示初始化：在设置中登录Claude Code / Codex / Grok 等引擎账号即可开始与 Agent 对话。
+  Webhook 回调地址已自动指向应用域名。数据保存在应用私有目录中，卸载前请先导出。

@@ -1,0 +1,20 @@
+package: community.lazycat.app.openmausbot
+version: 0.1.141
+name: OpenMausBot
+description: "Self-hosted AI chat app where every chat is a real coding agent (Claude Code, Codex, Grok) running in a container with its own browser."
+min_os_version: 1.5.0
+author: milind-soni
+license: Apache-2.0
+homepage: https://github.com/milind-soni/OpenMausBot
+
+locales:
+  zh:
+    name: "OpenMausBot"
+    description: "自托管 AI 聊天应用：每个会话都是一个真实的编码 Agent（Claude Code / Codex / Grok），运行在带浏览器的容器中。"
+  en:
+    name: "OpenMausBot"
+    description: "Self-hosted AI chat app where every chat is a real coding agent (Claude Code, Codex, Grok) running in a container with its own browser."
+
+permissions:
+  required:
+    - net.internet
