@@ -5,11 +5,11 @@ application:
       backend: http://omb:8799/
     - location: /hooks/
       backend: http://omb:8800/
-
 services:
   omb:
     # ghcr.io/milind-soni/openmausbot:v0.1.141
-    image: registry.lazycat.cloud/czyt/milind-soni/openmausbot:PLACEHOLDER
+    # upstream: ghcr.io/milind-soni/openmausbot:v0.1.141
+    image: ghcr.1ms.run/milind-soni/openmausbot:v0.1.141
     environment:
       - OMB_PORT=8799
       - OMB_WEBHOOK_PORT=8800
@@ -27,7 +27,6 @@ services:
       timeout: 5s
       retries: 3
       start_period: 30s
-
 usage: |
   打开应用后按页面提示初始化：在设置中登录Claude Code / Codex / Grok 等引擎账号即可开始与 Agent 对话。
   Webhook 回调地址已自动指向应用域名。数据保存在应用私有目录中，卸载前请先导出。
